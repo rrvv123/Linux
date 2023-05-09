@@ -1,0 +1,52 @@
+root@polystudent-virtual-machine:~/linkdir# ls
+originalfile
+root@polystudent-virtual-machine:~/linkdir# ls l
+ls: 'l'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+root@polystudent-virtual-machine:~/linkdir# ls-l
+ls-l: 명령을 찾을 수 없습니다
+root@polystudent-virtual-machine:~/linkdir# ls -l
+합계 4
+-rw-r--r-- 1 root root 47  5월  9 10:51 originalfile
+root@polystudent-virtual-machine:~/linkdir# ln oiginalfile hardlink
+ln: 'oiginalfile' 접근 실패: 그런 파일이나 디렉터리가 없습니다
+root@polystudent-virtual-machine:~/linkdir# ln originalfile hardlink
+root@polystudent-virtual-machine:~/linkdir# ln -s originalfile softlink
+root@polystudent-virtual-machine:~/linkdir# ls -l
+합계 8
+-rw-r--r-- 2 root root 47  5월  9 10:51 hardlink
+-rw-r--r-- 2 root root 47  5월  9 10:51 originalfile
+lrwxrwxrwx 1 root root 12  5월  9 11:10 softlink -> originalfile
+root@polystudent-virtual-machine:~/linkdir# ls -il
+합계 8
+531968 -rw-r--r-- 2 root root 47  5월  9 10:51 hardlink
+531968 -rw-r--r-- 2 root root 47  5월  9 10:51 originalfile
+531970 lrwxrwxrwx 1 root root 12  5월  9 11:10 softlink -> originalfile
+root@polystudent-virtual-machine:~/linkdir# cat hardlink
+링크시킬 원본 파일을 작성합니다.
+root@polystudent-virtual-machine:~/linkdir# cat softlink
+링크시킬 원본 파일을 작성합니다.
+root@polystudent-virtual-machine:~/linkdir# mv origlnalfile ../
+mv: 'origlnalfile' 상태 정보 확인 불가: 그런 파일이나 디렉터리가 없습니다
+root@polystudent-virtual-machine:~/linkdir# mv origilnalfile ../
+mv: 'origilnalfile' 상태 정보 확인 불가: 그런 파일이나 디렉터리가 없습니다
+root@polystudent-virtual-machine:~/linkdir# mv originalfile ../
+root@polystudent-virtual-machine:~/linkdir# ls
+hardlink  softlink
+root@polystudent-virtual-machine:~/linkdir# ls -il
+합계 4
+531968 -rw-r--r-- 2 root root 47  5월  9 10:51 hardlink
+531970 lrwxrwxrwx 1 root root 12  5월  9 11:10 softlink -> originalfile
+root@polystudent-virtual-machine:~/linkdir# cat hardlink
+링크시킬 원본 파일을 작성합니다.
+root@polystudent-virtual-machine:~/linkdir# cat softlink
+cat: softlink: 그런 파일이나 디렉터리가 없습니다
+root@polystudent-virtual-machine:~/linkdir# cd
+root@polystudent-virtual-machine:~# ls -il originalfile
+531968 -rw-r--r-- 2 root root 47  5월  9 10:51 originalfile
+root@polystudent-virtual-machine:~# mv originalfile ./linkdir
+root@polystudent-virtual-machine:~# cd linkdir
+root@polystudent-virtual-machine:~/linkdir# ls
+hardlink  originalfile  softlink
+root@polystudent-virtual-machine:~/linkdir# cat softlink
+링크시킬 원본 파일을 작성합니다.
+root@polystudent-virtual-machine:~/linkdir# 
