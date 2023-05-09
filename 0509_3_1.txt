@@ -1,0 +1,7 @@
+root@polystudent-virtual-machine:~/바탕화면# cd
+root@polystudent-virtual-machine:~# ps -ef|grep yes
+root        3311    3064 99 11:39 pts/0    00:01:40 yes
+root        3328    3319  0 11:41 pts/1    00:00:00 grep --color=auto yes
+root@polystudent-virtual-machine:~# kill -9 3311
+root@polystudent-virtual-machine:~# 
+
