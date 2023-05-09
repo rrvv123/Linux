@@ -1,0 +1,98 @@
+root@polystudent-virtual-machine:~# tail /etc/shadow
+gnome-initial-setup:*:19411:0:99999:7:::
+hplip:*:19411:0:99999:7:::
+gdm:*:19411:0:99999:7:::
+polystudent:$y$j9T$pIoMm7yWRbEM7Q3jI.gx11$keSGiPMs8fHUBPUx5WVQ3dirqwFK/rVXE1vJJtHcXD0:19430:0:99999:7:::
+poly1:$y$j9T$JX0J8NJbgU61FAg1Kq8GK1$WrkSVt/PHjCzVEjqYQPgQHAUKeZ46djzo.5kvqD10V0:19479:10:30:10::20818:
+poly2:$y$j9T$7T6jBBcmMKgsfa8.Kx43e1$.2YDthIWQSOEhZP7hAsK6tRzdwDmitkvaEPbDh810v.:19479:0:99999:7:::
+poly3:$y$j9T$oEYVvfmL0NGFY0eJx/uwt.$mtKvffyuvMHt.Gsss/HwJdsY5FCjJ./jgeX.DWH7rV4:19479:0:99999:7:::
+poly4:$y$j9T$1Z9qq9PI19l/XmnN033EP1$3dGfxKSbBjF2hE.D0bk0S.bD3mLqf2U9Kp8eKkRAer6:19479:0:99999:7:::
+hanbit1:$y$j9T$iNBnhPY/sG2WVU3Z1QZbi/$oy0Xv.avqcvFj3Jd651i5D9m10.DWl8N0/CcHD9DZ0.:19479:0:99999:7:::
+hanbit2:$y$j9T$konVO./d5MkyGEQ7pXjoB1$E9KDh7Rp.9bgJZdkW7g3YKjfGUbQZ2TosGRgyyD3W4C:19479:0:99999:7:::
+root@polystudent-virtual-machine:~# chown poly1 mydata.txt
+root@polystudent-virtual-machine:~# ls -l mydata.txt
+-r-xrw-r-x 1 poly1 root 0  5월  9 09:25 mydata.txt
+root@polystudent-virtual-machine:~# chown poly2.poly2 mydata.txt
+root@polystudent-virtual-machine:~# ls -l mydata.txt
+-r-xrw-r-x 1 poly2 poly2 0  5월  9 09:25 mydata.txt
+root@polystudent-virtual-machine:~# gropus
+명령어 'gropus' 을(를) 찾을 수 없습니다. 다음 명령어로 시도하시겠습니까:
+  deb gropsgroff-base의 명령어 ' (1.22.4-8build1)'
+  deb groupscoreutils의 명령어 ' (8.32-4.1ubuntu1)'
+Try: apt install <deb name>
+root@polystudent-virtual-machine:~# groups
+root
+root@polystudent-virtual-machine:~# chgrp root mydata.txt
+root@polystudent-virtual-machine:~# ls -l mydata.txt
+-r-xrw-r-x 1 poly2 root 0  5월  9 09:25 mydata.txt
+root@polystudent-virtual-machine:~# groups poly3
+poly3 : polystudent
+root@polystudent-virtual-machine:~# nano sample
+root@polystudent-virtual-machine:~# ls -l sample
+-rw-r--r-- 1 root root 99  5월  9 10:15 sample
+root@polystudent-virtual-machine:~# cat sample
+리눅스 명령 연습중
+파일 허가권과 파일 소유권에 대한 명령 실습중
+ls /var
+root@polystudent-virtual-machine:~# chmod u+x sample
+root@polystudent-virtual-machine:~# ls -l sample
+-rwxr--r-- 1 root root 99  5월  9 10:15 sample
+root@polystudent-virtual-machine:~# sample
+명령어 'sample' 을(를) 찾을 수 없습니다. 그러나 다음을 통해 설치할 수 있습니다:
+apt install barcode
+root@polystudent-virtual-machine:~# ./sample
+./sample: 줄 1: 리눅스: 명령어를 찾을 수 없음
+./sample: 줄 2: 파일: 명령어를 찾을 수 없음
+backups  crash	local  log   metrics  run   spool
+cache	 lib	lock   mail  opt      snap  tmp
+root@polystudent-virtual-machine:~# ls -l sample
+-rwxr--r-- 1 root root 99  5월  9 10:15 sample
+root@polystudent-virtual-machine:~# chown polytudent sample
+chown: 부적절한 사용자: `polytudent'
+root@polystudent-virtual-machine:~# chown polystudent sample
+root@polystudent-virtual-machine:~# ls -l sample
+-rwxr--r-- 1 polystudent root 99  5월  9 10:15 sample
+root@polystudent-virtual-machine:~# chown polystudent.polystudent sample
+root@polystudent-virtual-machine:~# ls -l sample
+-rwxr--r-- 1 polystudent polystudent 99  5월  9 10:15 sample
+root@polystudent-virtual-machine:~# chmod 754 sample
+root@polystudent-virtual-machine:~# ls -l sample
+-rwxr-xr-- 1 polystudent polystudent 99  5월  9 10:15 sample
+root@polystudent-virtual-machine:~# su - ubuntu
+su: user ubuntu does not exist or the user entry does not contain all the required fields
+root@polystudent-virtual-machine:~# su - polystudent
+polystudent@polystudent-virtual-machine:~$ pwd
+/home/polystudent
+polystudent@polystudent-virtual-machine:~$ ls -l /root/sample
+ls: '/root/sample'에 접근할 수 없음: 허가 거부
+polystudent@polystudent-virtual-machine:~$ ls -ld /root
+drwx------ 17 root root 4096  5월  9 10:15 /root
+polystudent@polystudent-virtual-machine:~$ exit
+로그아웃
+root@polystudent-virtual-machine:~# mv sample ~polystudent
+root@polystudent-virtual-machine:~# ls -l sample
+ls: 'sample'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+root@polystudent-virtual-machine:~# su - polystudent
+polystudent@polystudent-virtual-machine:~$ ls -ld sampl
+ls: 'sampl'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+polystudent@polystudent-virtual-machine:~$ ls -l sample
+-rwxr-xr-- 1 polystudent polystudent 99  5월  9 10:15 sample
+polystudent@polystudent-virtual-machine:~$ ls -ld /polystudent
+ls: '/polystudent'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+polystudent@polystudent-virtual-machine:~$ pwd
+/home/polystudent
+polystudent@polystudent-virtual-machine:~$ ls -ld /home/polystudent
+drwxr-x--- 14 polystudent polystudent 4096  5월  9 10:39 /home/polystudent
+polystudent@polystudent-virtual-machine:~$ chmod 777 sample
+polystudent@polystudent-virtual-machine:~$ ls -l sample
+-rwxrwxrwx 1 polystudent polystudent 99  5월  9 10:15 sample
+polystudent@polystudent-virtual-machine:~$ chown root.root sample
+chown: 'sample'의 소유권 바꾸는 중: 명령을 허용하지 않음
+polystudent@polystudent-virtual-machine:~$ logout
+root@polystudent-virtual-machine:~# cd
+root@polystudent-virtual-machine:~# mkdir linkdir
+root@polystudent-virtual-machine:~# cd linkdir/
+root@polystudent-virtual-machine:~/linkdir# nano originalfile
+root@polystudent-virtual-machine:~/linkdir# cat originalfile
+링크시킬 원본 파일을 작성합니다.
+root@polystudent-virtual-machine:~/linkdir# 
